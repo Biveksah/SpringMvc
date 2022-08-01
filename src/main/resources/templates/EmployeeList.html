@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Employee List</title>
+    <link
+      rel="stylesheet"
+      href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css"
+    />
+  </head>
+  <body>
+    <div th:insert="Navbar.html"></div>
+    <h1>Employee List</h1>
+    <hr />
+
+    <table id="myTable">
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Gender</td>
+          <td>Phone</td>
+          <td>Email</td>
+          <td>Country</td>
+          <td>Action</td>
+        </tr>
+      </thead>
+      <tbody th:each="emp:${emplist}">
+        <tr>
+          <td th:text="${emp.fname+' '+ emp.lname}"></td>
+          <td th:text="${emp.gender}"></td>
+          <td th:text="${emp.phone}"></td>
+          <td th:text="${emp.email}"></td>
+          <td th:text="${emp.address.country}"></td>
+          <td>
+            <a th:href="@{/edit?(id=${emp.id})}"
+              ><input type="submit" value="Edit"
+            /></a>
+            <a th:href="@{/delete?(id=${emp.id})}">
+              <input type="submit" value="Delete"
+            /></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script>
+      $(document).ready(function () {
+        $("#myTable").DataTable();
+      });
+    </script>
+  </body>
+</html>
+ 

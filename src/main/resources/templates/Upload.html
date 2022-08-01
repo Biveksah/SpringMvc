@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleag.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:insert="Navbar.html"></div>
+
+
+<div class="container">
+
+<form action="/upload" method="post" enctype="multipart/form-data">
+
+Select: <input type="file" name="image" class="form-control">
+		<input type="submit" value="Upload" class="btn btn-primary">
+
+</form>
+
+
+</div>
+</body>
+</html>
